@@ -121,17 +121,17 @@
 
                 (status! [this msg] (.status! basic-ed msg))
                  
-                 (warning! [this msg] (.warning! basic-ed msg))
+                (warning! [this msg] (.warning! basic-ed msg))
 
-                 (set-path-text! [this msg] (.set-path-text! basic-ed msg))
+                (set-path-text! [this msg] (.set-path-text! basic-ed msg))
 
-                 (update-path-text [this] (.update-path-text basic-ed))
+                (update-path-text [this] (.update-path-text basic-ed))
                  
-                 (sync-ui! [this]
-                   (.sync-ui! bank-ed)
-                   (.sync-ui! properties-panel)
-                   ((:syncfn program-bar))
-                   (.sync-ui! @cced*)) )]
+                (sync-ui! [this]
+                  (.sync-ui! bank-ed)
+                  (.sync-ui! properties-panel)
+                  ((:syncfn program-bar))
+                  (.sync-ui! @cced*)) )]
       (.set-parent-editor! properties-panel ped)
       (.set-parent-editor! bank-ed ped)
       (.put-property! performance :bank-editor bank-ed)

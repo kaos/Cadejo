@@ -68,14 +68,16 @@
         b-edit-scale (edit-button tools [(+ x0 125)(+ y0 142)] dbar-scale
                                   (format "%s Scale (0.0 4.0)" ctrl)
                                   scale-validator
-                                  scale-callback)]
+                                  scale-callback)
+        dbar-value (displaybar root (+ x0 32)(+ y0 5) 4)]
     (border root p0 [(+ x0 subpan-w)(+ y0 subpan-h)])
-    (title drw [(+ x0 70)(+ y0 25)](format "%s" ctrl))
+    (title drw [(+ x0 130)(+ y0 25)](format "%s" ctrl))
     (text drw [(+ x0 26)(+ y0 65)] "Curve" :style :sans :size 6)
     (text drw [(+ x0 28)(+ y0 132)] "Bias" :style :sans :size 6)
     (text drw [(+ x0 24)(+ y0 188)] "Scale" :style :sans :size 6)
     (.display! dbar-bias "+0.0" false)
     (.display! dbar-scale "1.0" false)
+    (.display! dbar-value "..." false)
     (reify cadejo.ui.node-observer/NodeObserver
       
       (set-parent-editor! [this ed]
