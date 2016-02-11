@@ -91,10 +91,12 @@
         (let [ccobj (cc-suite)
               crv (.curve ccobj ctrl)
               bias (.bias ccobj ctrl)
-              scale (.scale ccobj ctrl)]
+              scale (.scale ccobj ctrl)
+              value (.value ccobj ctrl)]
           (msb/set-multistate-button-state! b-curve (get inv-curve-map crv 0) false)
           (.display! dbar-bias (str bias) false)
-          (.display! dbar-scale (str scale) false))) )))
+          (.display! dbar-scale (str scale) false)
+          (.display! dbar-value (str value) false))) )))
 
 (defn cc-properties-panel [descriptor]
   (let [editor* (atom nil)

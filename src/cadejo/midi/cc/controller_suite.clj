@@ -92,6 +92,10 @@
     [this ctrl]
     "Returns bias factor for controller ctrl")
 
+  (value
+    [this ctrl]
+    "Returns current value of sc control bus assigned to controller ctrl")
+
   (?bus 
     [this ctrl]
     "Diagnostic display current value of sc control bus assigned to 
@@ -188,9 +192,14 @@
                 (let [cc (.get-controller this ctrl)]
                   (and cc (.bias cc))))
               
+              (value [this ctrl]
+                (let [bus (.bus this ctrl)]
+                  (if bus
+                    (ot/control-bus-get bus)
+                    nil)))
+
               (?bus [this ctrl]
-                (let [cc (.get-controller this ctrl)
-                      bus (if cc (.bus cc) nil)]
+                (let [bus (.bus this ctrl)]
                   (if bus
                     (println (format "cc bus %3d = %s" ctrl (ot/control-bus-get bus)))
                     (println (format "cc bus %3d not assigned" ctrl)))))
